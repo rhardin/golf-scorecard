@@ -60,3 +60,6 @@ Here's one round of golf for Joe and Bill:
 
 Given this input, your program should produce an individual score for each player and determine the winner of the round. Your output should be human readable.
 
+## How to submit an answer
+
+Create a branch with your team name and ask us to pull in class.
