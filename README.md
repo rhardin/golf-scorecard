@@ -31,13 +31,14 @@ Golf has a vocabulary to describe the performance of the player for a hole, as f
 
 Note that if there is not a name for the score on a hole, then the value is the number of strokes; e.g., +4 on a Par 5 is 9-strokes to complete the hole.
 
-* Here is an example of scoring stroke play in the language of the user:
+### Here is an example of scoring stroke play in the language of the user:
 
 Hole 7 is as Par 5. Joe got a birdie and Bill shot a Double. At Hole 8 (Par 3), Joe shot a bogey and Bill shot Par.
 
 Who is ahead?
 
 Joe's scores: (Par5,-1) + (Par3,+1) = 8 strokes
+
 Bill's score: (Par5,+2) + (Par3,0) = 10 strokes
 
 So, Joe is ahead.
