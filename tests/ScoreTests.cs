@@ -32,6 +32,12 @@ namespace tests {
             Assert.Equal(answer, Score(key, value));
         }
 
+        [Theory]
+        [InlineData("Par4", "Birdie", 3)]
+        public void CanIdentifyABirdie(string key, string value, int answer) {
+            Assert.Equal(answer, Score(key, value));
+        }
+
         private int ConvertHole(string holeValue)
         {
             var val = holeValue.Split(new [] { "Par" }, StringSplitOptions.None)[1];
@@ -42,6 +48,7 @@ namespace tests {
         {
             if (value == "Bogey") { return ConvertHole(key)+1; }
             if (value == "Par") { return ConvertHole(key); }
+            if (value == "Birdie") { return ConvertHole(key)-1; }
             throw new NotImplementedException();
         }
     }
