@@ -52,7 +52,7 @@ namespace tests {
         [InlineData("Par1", "Eagle")]
         [InlineData("Par2", "Albatross")]
         [InlineData("Par3", "Condor")]
-        public void CantIdentifyAnInvalidScore(string hole, string playerScore) {
+        public void ScoreCantBeLessThanZero(string hole, string playerScore) {
             var score = new Score();
             Assert.Throws<InvalidOperationException>(() => score.Calculate(hole, playerScore));
         }
