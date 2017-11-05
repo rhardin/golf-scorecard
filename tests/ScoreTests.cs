@@ -17,16 +17,13 @@ namespace tests {
 
         [Theory]
         [InlineData("Par5", "Condor", 1)]
+        [InlineData("Par4", "Condor", 0)]
         [InlineData("Par5", "Albatross", 2)]
         [InlineData("Par4", "Albatross", 1)]
         [InlineData("Par3", "Albatross", 0)]
         [InlineData("Par5", "Eagle", 3)]
         [InlineData("Par4", "Eagle", 2)]
         [InlineData("Par3", "Eagle", 1)]
-        [InlineData("Par3", "Bogey", 4)]
-        [InlineData("Par4", "Bogey", 5)]
-        [InlineData("Par2", "Bogey", 3)]
-        [InlineData("Par5", "Bogey", 6)]
         [InlineData("Par4", "Birdie", 3)]
         [InlineData("Par3", "Birdie", 2)]
         [InlineData("Par5", "Birdie", 4)]
@@ -34,6 +31,14 @@ namespace tests {
         [InlineData("Par3", "Par", 3)]
         [InlineData("Par4", "Par", 4)]
         [InlineData("Par5", "Par", 5)]
+        [InlineData("Par3", "Bogey", 4)]
+        [InlineData("Par4", "Bogey", 5)]
+        [InlineData("Par2", "Bogey", 3)]
+        [InlineData("Par5", "Bogey", 6)]
+        [InlineData("Par5", "Double", 7)]
+        [InlineData("Par4", "Double", 6)]
+        [InlineData("Par3", "Double", 5)]
+        [InlineData("Par2", "Double", 4)]
         public void CanIdentifyAScore(string key, string value, int answer){
             var score = new Score();
             Assert.Equal(answer, score.Calculate(key, value));
@@ -60,7 +65,8 @@ namespace tests {
                 {"Eagle", -2},
                 {"Birdie", -1},
                 {"Par", 0},
-                {"Bogey", 1}
+                {"Bogey", 1},
+                {"Double", 2}
             };
         }
 
