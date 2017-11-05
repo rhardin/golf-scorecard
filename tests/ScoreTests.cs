@@ -41,10 +41,6 @@ namespace tests {
             var score = new Score();
             Assert.Equal(answer, score.Calculate(key, value));
         }
-
-        
-
-        private Dictionary<string, int> scoreOperations;
     }
 
     public class Score {
@@ -60,7 +56,9 @@ namespace tests {
         }
 
         public int Calculate(string holeValue, string playerScore) {
-            if (scoreOperations.ContainsKey(playerScore)) { return ConvertHole(holeValue) + scoreOperations[playerScore]; }
+            if (scoreOperations.ContainsKey(playerScore)) { 
+                return ConvertHole(holeValue) + scoreOperations[playerScore]; 
+            }
             throw new NotImplementedException();
         }
 
