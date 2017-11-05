@@ -20,26 +20,14 @@ namespace tests {
         [InlineData("Par4", "Bogey", 5)]
         [InlineData("Par2", "Bogey", 3)]
         [InlineData("Par5", "Bogey", 6)]
-        public void CanIdentifyABogey(string key, string value, int answer){
-            var score = new Score();
-            Assert.Equal(answer, score.Calculate(key, value));
-        }
-
-        [Theory]
+        [InlineData("Par4", "Birdie", 3)]
+        [InlineData("Par3", "Birdie", 2)]
+        [InlineData("Par5", "Birdie", 4)]
         [InlineData("Par2", "Par", 2)]
         [InlineData("Par3", "Par", 3)]
         [InlineData("Par4", "Par", 4)]
         [InlineData("Par5", "Par", 5)]
-        public void CanIdentifyPar(string key, string value, int answer) {
-            var score = new Score();
-            Assert.Equal(answer, score.Calculate(key, value));
-        }
-
-        [Theory]
-        [InlineData("Par4", "Birdie", 3)]
-        [InlineData("Par3", "Birdie", 2)]
-        [InlineData("Par5", "Birdie", 4)]
-        public void CanIdentifyABirdie(string key, string value, int answer) {
+        public void CanIdentifyAScore(string key, string value, int answer){
             var score = new Score();
             Assert.Equal(answer, score.Calculate(key, value));
         }
