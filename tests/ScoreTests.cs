@@ -16,6 +16,7 @@ namespace tests {
         }
 
         [Theory]
+        [InlineData("Par5", "Eagle", 3)]
         [InlineData("Par3", "Bogey", 4)]
         [InlineData("Par4", "Bogey", 5)]
         [InlineData("Par2", "Bogey", 3)]
@@ -31,6 +32,12 @@ namespace tests {
             var score = new Score();
             Assert.Equal(answer, score.Calculate(key, value));
         }
+
+        [Fact]
+        public void CantIdentifyAnInvalidScore() {
+            var score = new Score();
+            Assert.Throws<InvalidOperationException>(() => score.Calculate("Par1", "Eagle"));
+        }
     }
 
     public class Score {
@@ -39,6 +46,7 @@ namespace tests {
         public Score() {
             //setup operations
             scoreOperations = new Dictionary<string, int>(){
+                {"Eagle", -2},
                 {"Birdie", -1},
                 {"Par", 0},
                 {"Bogey", 1}
@@ -47,7 +55,9 @@ namespace tests {
 
         public int Calculate(string holeValue, string playerScore) {
             if (scoreOperations.ContainsKey(playerScore)) { 
-                return ConvertHole(holeValue) + scoreOperations[playerScore]; 
+                var x = ConvertHole(holeValue) + scoreOperations[playerScore]; 
+                if (x < 0) { throw new InvalidOperationException("A score cannot result in a valud less than 0"); }
+                return x;
             }
             throw new NotImplementedException();
         }
