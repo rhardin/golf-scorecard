@@ -17,6 +17,8 @@ namespace tests {
 
         [Theory]
         [InlineData("Par5", "Albatross", 2)]
+        [InlineData("Par4", "Albatross", 1)]
+        [InlineData("Par3", "Albatross", 0)]
         [InlineData("Par5", "Eagle", 3)]
         [InlineData("Par4", "Eagle", 2)]
         [InlineData("Par3", "Eagle", 1)]
