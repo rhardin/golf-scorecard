@@ -64,6 +64,14 @@ namespace tests {
             Assert.Equal(7, score.Add("Par3", "Par"));
             Assert.Throws<InvalidOperationException>(() => score.Add("Par1", "Albatross"));
         }
+
+        [Fact]
+        public void CanGetTotal() {
+            var score = new Score();
+            var x = score.Add("Par3", "Bogey");
+            Assert.Equal(4, score.Total);
+            Assert.Equal(x, score.Total);
+        }
     }
 
     public class Score {
@@ -83,6 +91,8 @@ namespace tests {
                 {"Triple", 3}
             };
         }
+
+        public int Total => total;
 
         public int Calculate(string holeValue, string playerScore) {
             if (scoreOperations.ContainsKey(playerScore)) { 
