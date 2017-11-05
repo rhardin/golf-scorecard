@@ -63,6 +63,7 @@ namespace tests {
             Assert.Equal(4, score.Add("Par3", "Bogey"));
             Assert.Equal(7, score.Add("Par3", "Par"));
             Assert.Throws<InvalidOperationException>(() => score.Add("Par1", "Albatross"));
+            Assert.Equal(7, score.Total);
         }
 
         [Fact]
