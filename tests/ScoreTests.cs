@@ -68,7 +68,7 @@ namespace tests {
 
     public class Score {
         private Dictionary<string, int> scoreOperations;
-        private int playerScore = 0;
+        private int total = 0;
 
         public Score() {
             //setup operations
@@ -101,8 +101,8 @@ namespace tests {
 
         internal int Add(string holeValue, string playerScore)
         {
-            this.playerScore += Calculate(holeValue, playerScore);
-            return this.playerScore;
+            total += Calculate(holeValue, playerScore);
+            return total;
         }
     }
 }
