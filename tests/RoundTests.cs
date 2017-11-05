@@ -26,6 +26,13 @@ namespace tests {
         }
 
         [Fact]
+        public void CantGetScoreForInvalidPlayer() {
+            var round = new Round();
+            round.AddPlayer("Rob");
+            Assert.Throws<ArgumentException>(() => round.GetScoreFor("Xandar"));
+        }
+
+        [Fact]
         public void CanScoreAGroupOnAHole() {
             var round = new Round();
             round.AddPlayer("Joe");

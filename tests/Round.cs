@@ -23,6 +23,7 @@ namespace tests
         }
 
         public int GetScoreFor(string player) {
+            if (!round.ContainsKey(player)) { throw new ArgumentException("Player is not part of this round"); }
             return round[player].Total;
         }
     }
