@@ -16,6 +16,7 @@ namespace tests {
         }
 
         [Theory]
+        [InlineData("Par5", "Albatross", 2)]
         [InlineData("Par5", "Eagle", 3)]
         [InlineData("Par4", "Eagle", 2)]
         [InlineData("Par3", "Eagle", 1)]
@@ -35,10 +36,12 @@ namespace tests {
             Assert.Equal(answer, score.Calculate(key, value));
         }
 
-        [Fact]
-        public void CantIdentifyAnInvalidScore() {
+        [Theory]
+        [InlineData("Par1", "Eagle")]
+        [InlineData("Par2", "Albatross")]
+        public void CantIdentifyAnInvalidScore(string hole, string playerScore) {
             var score = new Score();
-            Assert.Throws<InvalidOperationException>(() => score.Calculate("Par1", "Eagle"));
+            Assert.Throws<InvalidOperationException>(() => score.Calculate(hole, playerScore));
         }
     }
 
@@ -47,7 +50,8 @@ namespace tests {
 
         public Score() {
             //setup operations
-            scoreOperations = new Dictionary<string, int>(){
+            scoreOperations = new Dictionary<string, int>() {
+                {"Albatross", -3},
                 {"Eagle", -2},
                 {"Birdie", -1},
                 {"Par", 0},
