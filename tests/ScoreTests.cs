@@ -39,6 +39,10 @@ namespace tests {
         [InlineData("Par4", "Double", 6)]
         [InlineData("Par3", "Double", 5)]
         [InlineData("Par2", "Double", 4)]
+        [InlineData("Par5", "Triple", 8)]
+        [InlineData("Par4", "Triple", 7)]
+        [InlineData("Par3", "Triple", 6)]
+        [InlineData("Par2", "Triple", 5)]
         public void CanIdentifyAScore(string key, string value, int answer){
             var score = new Score();
             Assert.Equal(answer, score.Calculate(key, value));
@@ -66,7 +70,8 @@ namespace tests {
                 {"Birdie", -1},
                 {"Par", 0},
                 {"Bogey", 1},
-                {"Double", 2}
+                {"Double", 2},
+                {"Triple", 3}
             };
         }
 
