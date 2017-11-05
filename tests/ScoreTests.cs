@@ -56,10 +56,19 @@ namespace tests {
             var score = new Score();
             Assert.Throws<InvalidOperationException>(() => score.Calculate(hole, playerScore));
         }
+
+        [Fact]
+        public void ScoreCanAccumulate() {
+            var score = new Score();
+            Assert.Equal(4, score.Add("Par3", "Bogey"));
+            Assert.Equal(7, score.Add("Par3", "Par"));
+            Assert.Throws<InvalidOperationException>(() => score.Add("Par1", "Albatross"));
+        }
     }
 
     public class Score {
         private Dictionary<string, int> scoreOperations;
+        private int playerScore = 0;
 
         public Score() {
             //setup operations
@@ -88,6 +97,12 @@ namespace tests {
         {
             var val = holeValue.Split(new [] { "Par" }, StringSplitOptions.None)[1];
             return int.Parse(val);
+        }
+
+        internal int Add(string holeValue, string playerScore)
+        {
+            this.playerScore += Calculate(holeValue, playerScore);
+            return this.playerScore;
         }
     }
 }
