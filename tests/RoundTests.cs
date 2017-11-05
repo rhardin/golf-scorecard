@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace tests {
@@ -7,6 +8,13 @@ namespace tests {
             var round = new Round();
             round.AddPlayer("Rob");
             Assert.True(round.ContainsPlayer("Rob"));
+        }
+
+        [Fact]
+        public void CantAddDuplicatePlayer() {
+            var round = new Round();
+            round.AddPlayer("Rob");
+            Assert.Throws<InvalidOperationException>(() => round.AddPlayer("Rob"));
         }
 
         [Fact]
