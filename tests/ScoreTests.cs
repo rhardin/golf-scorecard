@@ -16,6 +16,7 @@ namespace tests {
         }
 
         [Theory]
+        [InlineData("Par5", "Condor", 1)]
         [InlineData("Par5", "Albatross", 2)]
         [InlineData("Par4", "Albatross", 1)]
         [InlineData("Par3", "Albatross", 0)]
@@ -41,6 +42,7 @@ namespace tests {
         [Theory]
         [InlineData("Par1", "Eagle")]
         [InlineData("Par2", "Albatross")]
+        [InlineData("Par3", "Condor")]
         public void CantIdentifyAnInvalidScore(string hole, string playerScore) {
             var score = new Score();
             Assert.Throws<InvalidOperationException>(() => score.Calculate(hole, playerScore));
@@ -53,6 +55,7 @@ namespace tests {
         public Score() {
             //setup operations
             scoreOperations = new Dictionary<string, int>() {
+                {"Condor", -4},
                 {"Albatross", -3},
                 {"Eagle", -2},
                 {"Birdie", -1},
