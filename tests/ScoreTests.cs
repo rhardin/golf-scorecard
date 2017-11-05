@@ -37,6 +37,8 @@ namespace tests {
 
         [Theory]
         [InlineData("Par4", "Birdie", 3)]
+        [InlineData("Par3", "Birdie", 2)]
+        [InlineData("Par5", "Birdie", 4)]
         public void CanIdentifyABirdie(string key, string value, int answer) {
             var score = new Score();
             Assert.Equal(answer, score.Calculate(key, value));
