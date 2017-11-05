@@ -52,12 +52,15 @@ namespace tests {
 
         public Score() {
             //setup operations
+            scoreOperations = new Dictionary<string, int>(){
+                {"Birdie", -1},
+                {"Par", 0},
+                {"Bogey", 1}
+            };
         }
 
         public int Calculate(string holeValue, string playerScore) {
-            if (playerScore == "Bogey") { return ConvertHole(holeValue)+1; }
-            if (playerScore == "Par") { return ConvertHole(holeValue); }
-            if (playerScore == "Birdie") { return ConvertHole(holeValue)-1; }
+            if (scoreOperations.ContainsKey(playerScore)) { return ConvertHole(holeValue) + scoreOperations[playerScore]; }
             throw new NotImplementedException();
         }
 
