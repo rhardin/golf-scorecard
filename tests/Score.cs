@@ -23,12 +23,20 @@ namespace tests {
         public int Total => total;
 
         public int Calculate(string holeValue, string playerScore) {
+            int result = 0, val = 0;
             if (scoreOperations.ContainsKey(playerScore)) { 
-                var x = ConvertHole(holeValue) + scoreOperations[playerScore]; 
-                if (x < 0) { throw new InvalidOperationException("A score cannot result in a valud less than 0"); }
-                return x;
+                result = ConvertHole(holeValue) + scoreOperations[playerScore]; 
             }
-            throw new NotImplementedException();
+            else if (int.TryParse(playerScore, out val)) { 
+                result = ConvertHole(holeValue) + val; 
+            }
+            else { 
+                throw new ArgumentException(); 
+            }
+            
+            if (result < 0) { throw new InvalidOperationException("A score cannot result in a value less than 0"); }
+
+            return result;
         }
 
         public int ConvertHole(string holeValue)

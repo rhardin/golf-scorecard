@@ -73,5 +73,15 @@ namespace tests {
             Assert.Equal(4, score.Total);
             Assert.Equal(x, score.Total);
         }
+
+        [Theory]
+        [InlineData("Par4", "+5", 9)]
+        [InlineData("Par3", "+1", 4)]
+        [InlineData("Par2", "+3", 5)]
+        [InlineData("Par3", "+9", 12)]
+        public void CanScoreANumber(string hole, string value, int answer) {
+            var score = new Score();
+            Assert.Equal(answer, score.Calculate(hole, value));
+        }
     }
 }
