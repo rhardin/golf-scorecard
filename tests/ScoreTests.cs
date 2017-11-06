@@ -52,6 +52,8 @@ namespace tests {
         [InlineData("Par1", "Eagle")]
         [InlineData("Par2", "Albatross")]
         [InlineData("Par3", "Condor")]
+        [InlineData("Par3", "-4")]
+        [InlineData("Par1", "-41")]
         public void ScoreCantBeLessThanZero(string hole, string playerScore) {
             var score = new Score();
             Assert.Throws<InvalidOperationException>(() => score.Calculate(hole, playerScore));
@@ -82,6 +84,16 @@ namespace tests {
         public void CanScoreANumber(string hole, string value, int answer) {
             var score = new Score();
             Assert.Equal(answer, score.Calculate(hole, value));
+        }
+
+        [Theory]
+        [InlineData("Rob23")]
+        [InlineData("41test")]
+        [InlineData("41")]
+        [InlineData("Par")]
+        public void MustProvideValidHole(string hole) {
+            var score = new Score();
+            Assert.Throws<ArgumentException>(() => score.ConvertHole(hole));
         }
     }
 }

@@ -41,6 +41,9 @@ namespace tests {
 
         public int ConvertHole(string holeValue)
         {
+            if (!holeValue.Contains("Par") || holeValue.ToLower() == "par") { 
+                throw new ArgumentException("holeValue must be in the format of ParX"); 
+            }
             var val = holeValue.Split(new [] { "Par" }, StringSplitOptions.None)[1];
             return int.Parse(val);
         }
